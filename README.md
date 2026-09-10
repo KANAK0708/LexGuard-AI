@@ -131,9 +131,9 @@ python -c "from eval import run_eval; run_eval()"
 
 ## 🌐 Production Deployment Architecture
 
-- **Frontend UI**: Hosted on **Vercel** (`vercel.json`)
-- **API Backend**: Hosted on **Render** Docker service (`render.yaml`)
-- **Database**: Hosted on **Supabase PostgreSQL** (`backend/db/schema.sql`)
+- **Frontend UI**: Hosted on **Streamlit Community Cloud** ([`ui/app.py`](file:///d:/legal%20risk%20quantifier/ui/app.py))
+- **API Backend**: Hosted on **Render** Docker service ([`render.yaml`](file:///d:/legal%20risk%20quantifier/render.yaml))
+- **Database**: Hosted on **Supabase PostgreSQL** ([`backend/db/schema.sql`](file:///d:/legal%20risk%20quantifier/backend/db/schema.sql))
 
 ---
 

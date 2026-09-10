@@ -9,13 +9,7 @@
       "f1": 1.0,
       "support": 0
     },
-    "Indemnification": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 1
-    },
-    "LimitationOfLiability": {
+    "Termination": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
@@ -33,6 +27,18 @@
       "f1": 1.0,
       "support": 0
     },
+    "Indemnification": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "LimitationOfLiability": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
     "Warranty": {
       "precision": 1.0,
       "recall": 1.0,
@@ -44,12 +50,6 @@
       "recall": 1.0,
       "f1": 1.0,
       "support": 0
-    },
-    "Termination": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 1
     }
   }
 }
