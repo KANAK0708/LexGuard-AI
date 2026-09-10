@@ -9,13 +9,7 @@
       "f1": 1.0,
       "support": 0
     },
-    "Termination": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 1
-    },
-    "GoverningLaw": {
+    "NonCompete": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
@@ -27,13 +21,19 @@
       "f1": 1.0,
       "support": 0
     },
-    "Indemnification": {
+    "GoverningLaw": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 0
+    },
+    "Termination": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
       "support": 1
     },
-    "LimitationOfLiability": {
+    "Indemnification": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
@@ -45,11 +45,11 @@
       "f1": 1.0,
       "support": 0
     },
-    "NonCompete": {
+    "LimitationOfLiability": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
-      "support": 0
+      "support": 1
     }
   }
 }

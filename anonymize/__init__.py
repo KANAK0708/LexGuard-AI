@@ -32,11 +32,17 @@ def _load_nlp(model_name: str):
 
     try:
         return spacy.load(model_name)
-    except OSError as exc:
-        raise RuntimeError(
-            f"spaCy model {model_name!r} is not installed. "
-            f"Run: python -m spacy download {model_name}"
-        ) from exc
+    except OSError:
+        try:
+            import spacy.cli
+
+            spacy.cli.download(model_name)
+            return spacy.load(model_name)
+        except Exception as exc:
+            raise RuntimeError(
+                f"spaCy model {model_name!r} is not installed and auto-download failed. "
+                f"Run: python -m spacy download {model_name}"
+            ) from exc
 
 
 def get_nlp(model_name: str = "en_core_web_sm"):
