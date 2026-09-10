@@ -227,7 +227,11 @@ def test_pipeline_anonymizes_sample_docx():
 
     main()
 
-    result = run(SAMPLES / "structured_nda.docx", role="Client")
+    from unittest.mock import patch
+
+    with patch("llm.query_ollama") as mock_q:
+        mock_q.return_value = '{"category":"Unclassified","plain_language_summary":"summary","risk_explanation":"risk","base_risk_score":0.3,"quoted_text":"text"}'
+        result = run(SAMPLES / "structured_nda.docx", role="Client")
     assert result["status"] == "anonymized"
     doc = result["document"]
     assert "entity_map" in doc

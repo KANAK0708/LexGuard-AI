@@ -1,0 +1,16 @@
+# Render Infrastructure as Code (render.yaml)
+services:
+  - type: web
+    name: lexguard-ai-backend
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    region: oregon
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: OLLAMA_BASE_URL
+        value: http://localhost:11434

@@ -1,4 +1,4 @@
-"""Configuration loading for the Legal Risk Quantifier."""
+"""Configuration loading for LexGuard AI."""
 
 from __future__ import annotations
 

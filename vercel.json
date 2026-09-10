@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "lexguard-ai-ui",
+  "builds": [
+    {
+      "src": "ui/app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "ui/app.py"
+    }
+  ]
+}

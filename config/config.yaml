@@ -1,7 +1,7 @@
 ollama:
   model: llama3:8b-instruct-q4_0
   base_url: http://localhost:11434
-  timeout_seconds: 120
+  timeout_seconds: 5
 
 drift:
   # Starting hypotheses - calibrate in Phase 3 against labeled pairs
