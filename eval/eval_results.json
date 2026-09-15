@@ -3,37 +3,13 @@
   "total_test_samples": 3,
   "total_predictions": 3,
   "per_category": {
-    "NonCompete": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 0
-    },
-    "IPOwnership": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 0
-    },
-    "GoverningLaw": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 0
-    },
-    "PaymentTerms": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 0
-    },
-    "Indemnification": {
+    "Termination": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
       "support": 1
     },
-    "LimitationOfLiability": {
+    "Indemnification": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
@@ -45,7 +21,31 @@
       "f1": 1.0,
       "support": 0
     },
-    "Termination": {
+    "PaymentTerms": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 0
+    },
+    "GoverningLaw": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 0
+    },
+    "IPOwnership": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 0
+    },
+    "NonCompete": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 0
+    },
+    "LimitationOfLiability": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,

@@ -1,10 +1,22 @@
 # Render Infrastructure as Code (render.yaml)
 services:
+  # 1. LexGuard AI Streamlit Frontend Web Service
+  - type: web
+    name: lexguard-ai-frontend
+    env: docker
+    dockerfilePath: ./ui/Dockerfile
+    region: singapore
+    plan: free
+    envVars:
+      - key: OLLAMA_BASE_URL
+        value: http://localhost:11434
+
+  # 2. LexGuard AI FastAPI Backend REST API Web Service
   - type: web
     name: lexguard-ai-backend
     env: docker
     dockerfilePath: ./backend/Dockerfile
-    region: oregon
+    region: singapore
     plan: free
     healthCheckPath: /health
     envVars:
