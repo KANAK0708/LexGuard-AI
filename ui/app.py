@@ -49,7 +49,7 @@ def main() -> None:
 
     # --- SIDEBAR ---
     with st.sidebar:
-        st.markdown("<h2 style='color: #FFFFFF !important; font-family: sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem;'>⚖️ LexGuard AI</h2>", unsafe_allow_html=True)
+        st.title("⚖️ LexGuard AI")
         st.caption("AI-Powered Contract Intelligence & Risk Quantification")
         st.markdown("---")
 
@@ -75,10 +75,9 @@ def main() -> None:
         )
 
     # --- MAIN HERO SECTION ---
-    st.markdown("<h1 style='color: #FFFFFF !important; font-family: sans-serif; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; margin-top: 0; margin-bottom: 0.25rem;'>⚖️ LexGuard AI — Contract Risk & Intent Drift Intelligence</h1>", unsafe_allow_html=True)
-    st.markdown(
-        "<p style='color: #E2E8F0 !important; font-family: sans-serif; font-size: 1.05rem; line-height: 1.5; margin-bottom: 1.5rem;'>Automated contract risk evaluation, PII anonymization, and cross-version intent drift detection built for corporate legal teams and business executives.</p>",
-        unsafe_allow_html=True,
+    st.title("⚖️ LexGuard AI — Contract Risk & Intent Drift Intelligence")
+    st.caption(
+        "Automated contract risk evaluation, PII anonymization, and cross-version intent drift detection built for corporate legal teams and business executives."
     )
 
     # Top Visual Guide Banner

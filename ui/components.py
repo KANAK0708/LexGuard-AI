@@ -16,19 +16,27 @@ def inject_custom_css() -> None:
         max-width: 1200px;
     }
 
-    /* Product Header title styling */
-    .product-title, h1.product-title, h1 {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        font-weight: 800;
-        color: #FFFFFF !important;
-        letter-spacing: -0.03em;
-        margin-bottom: 0.2rem;
+    /* Streamlit Global Text & Heading Color Overrides for High Visibility */
+    .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
+        color: #F8FAFC !important;
     }
 
-    .product-subtitle, p.product-subtitle {
-        font-size: 1.05rem;
-        color: #E2E8F0 !important;
-        margin-bottom: 1.5rem;
+    [data-testid="stMarkdownContainer"] h1,
+    [data-testid="stMarkdownContainer"] h2,
+    [data-testid="stMarkdownContainer"] h3,
+    [data-testid="stMarkdownContainer"] h4,
+    [data-testid="stMarkdownContainer"] p,
+    [data-testid="stMarkdownContainer"] span,
+    .product-title,
+    .product-subtitle {
+        color: #F8FAFC !important;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span {
+        color: #FFFFFF !important;
     }
 
     /* Risk Badges */
