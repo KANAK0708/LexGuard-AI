@@ -9,7 +9,19 @@
       "f1": 1.0,
       "support": 0
     },
-    "NonCompete": {
+    "Termination": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "Indemnification": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 1
+    },
+    "PaymentTerms": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
@@ -27,25 +39,13 @@
       "f1": 1.0,
       "support": 0
     },
-    "LimitationOfLiability": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 1
-    },
-    "PaymentTerms": {
+    "NonCompete": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,
       "support": 0
     },
-    "Termination": {
-      "precision": 1.0,
-      "recall": 1.0,
-      "f1": 1.0,
-      "support": 1
-    },
-    "Indemnification": {
+    "LimitationOfLiability": {
       "precision": 1.0,
       "recall": 1.0,
       "f1": 1.0,

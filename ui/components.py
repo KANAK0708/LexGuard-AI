@@ -17,18 +17,17 @@ def inject_custom_css() -> None:
     }
 
     /* Product Header title styling */
-    .product-title {
+    .product-title, h1.product-title, h1 {
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         font-weight: 800;
         color: #FFFFFF !important;
-        font-size: 2.2rem;
         letter-spacing: -0.03em;
         margin-bottom: 0.2rem;
     }
 
-    .product-subtitle {
+    .product-subtitle, p.product-subtitle {
         font-size: 1.05rem;
-        color: #CBD5E1 !important;
+        color: #E2E8F0 !important;
         margin-bottom: 1.5rem;
     }
 
