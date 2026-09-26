@@ -20,7 +20,7 @@ def inject_custom_css() -> None:
     .product-title {
         font-family: 'Inter', system-ui, -apple-system, sans-serif;
         font-weight: 800;
-        color: #0F172A;
+        color: #FFFFFF !important;
         font-size: 2.2rem;
         letter-spacing: -0.03em;
         margin-bottom: 0.2rem;
@@ -28,7 +28,7 @@ def inject_custom_css() -> None:
 
     .product-subtitle {
         font-size: 1.05rem;
-        color: #475569;
+        color: #CBD5E1 !important;
         margin-bottom: 1.5rem;
     }
 
