@@ -249,7 +249,7 @@ def main() -> None:
             with c2:
                 st.metric("🟡 Obligation Shifts", intent_count, help="Clauses where terms or conditions were modified.")
             with c3:
-                st.metric("🔴 Critical Redrafts", rewrite_count, help="Major legal changes, added obligations, or deleted rights.")
+                st.metric("⚪ Critical Redrafts", rewrite_count, help="Major legal changes, added obligations, or deleted rights.")
 
             st.markdown("---")
             st.subheader("Clause Comparison Matrix")
