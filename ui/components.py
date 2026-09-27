@@ -29,14 +29,14 @@ def inject_custom_css() -> None:
     [data-testid="stMarkdownContainer"] span,
     .product-title,
     .product-subtitle {
-        color: #FF0000 !important;
+        color: #FFFFFF !important;
     }
 
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span {
-        color: #FF0000 !important;
+        color: #FFFFFF !important;
     }
 
     /* Risk Badges */
@@ -59,8 +59,8 @@ def inject_custom_css() -> None:
         letter-spacing: 0.02em;
     }
     .badge-high {
-        background-color: #FDE8E8;
-        color: #9B1C1C;
+        background-color: #F8FAFC;
+        color: #0F172A;
         font-weight: 700;
         padding: 4px 12px;
         border-radius: 9999px;
@@ -86,8 +86,8 @@ def inject_custom_css() -> None:
         font-size: 0.825rem;
     }
     .drift-rewrite {
-        background-color: #FEE2E2;
-        color: #991B1B;
+        background-color: #F8FAFC;
+        color: #0F172A;
         font-weight: 600;
         padding: 4px 10px;
         border-radius: 6px;
@@ -129,7 +129,7 @@ def render_drift_badge(label: str) -> str:
     if label == "IntentShift":
         return '<span class="drift-intent">🟡 Obligation Shift</span>'
     if label == "SubstantialRewrite":
-        return '<span class="drift-rewrite">🔴 Critical Redraft</span>'
+        return '<span class="drift-rewrite">⚪ Critical Redraft</span>'
     return f'<span class="drift-cosmetic">{label}</span>'
 
 
@@ -171,9 +171,9 @@ def render_guide_banner() -> None:
 def render_executive_summary_box(avg_score: float, role: str, high_risk_count: int) -> None:
     """Render executive summary takeaway box for business managers."""
     if avg_score >= 0.6 or high_risk_count > 0:
-        color = "#DC2626"
-        bg = "#FEF2F2"
-        border = "#FCA5A5"
+        color = "#0F172A"
+        bg = "#F8FAFC"
+        border = "#CBD5E1"
         status = "CRITICAL LEGAL EXPOSURE DETECTED"
         guidance = f"This agreement contains high-exposure terms for a <strong>{role}</strong>. Recommend legal counsel review on highlighted Indemnity or Liability provisions before execution."
     elif avg_score >= 0.3:

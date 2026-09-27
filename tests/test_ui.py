@@ -31,6 +31,8 @@ def test_render_drift_badge():
     rewrite = render_drift_badge("SubstantialRewrite")
     assert "Critical Redraft" in rewrite
     assert "drift-rewrite" in rewrite
+    assert "⚪" in rewrite
+    assert "🔴" not in rewrite
 
 
 def test_render_verified_badge():
