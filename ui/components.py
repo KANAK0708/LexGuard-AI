@@ -18,7 +18,7 @@ def inject_custom_css() -> None:
 
     /* Streamlit Global Text & Heading Color Overrides for High Visibility */
     .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
-        color: #F8FAFC !important;
+        color: #FFFFFF !important;
     }
 
     [data-testid="stMarkdownContainer"] h1,
@@ -29,14 +29,14 @@ def inject_custom_css() -> None:
     [data-testid="stMarkdownContainer"] span,
     .product-title,
     .product-subtitle {
-        color: #F8FAFC !important;
+        color: #FF0000 !important;
     }
 
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span {
-        color: #FFFFFF !important;
+        color: #FF0000 !important;
     }
 
     /* Risk Badges */
