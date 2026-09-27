@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
-from typing import Any, Dict
 
 # Ensure project root is in sys.path when running via Streamlit
 _ROOT = Path(__file__).resolve().parents[1]
@@ -14,21 +13,24 @@ if str(_ROOT) not in sys.path:
 
 import streamlit as st
 
-from anonymize import anonymize, collect_llm_payloads
+from anonymize import anonymize
 from config import load_config
-from drift import compare
 from embed import embed_document
-from ingest import detect_format, ingest_bytes
+from ingest import ingest_bytes
 from llm import analyze as llm_analyze, is_ollama_online
 from parser import parse_file
 from pipeline import run as run_pipeline
 from score import score_document
 from ui.components import (
     inject_custom_css,
+    render_brand,
     render_drift_badge,
+    render_empty_state,
     render_executive_summary_box,
     render_guide_banner,
+    render_hero,
     render_risk_badge,
+    render_section_heading,
     render_verified_badge,
 )
 from verify import verify
@@ -49,55 +51,56 @@ def main() -> None:
 
     # --- SIDEBAR ---
     with st.sidebar:
-        st.title("⚖️ LexGuard AI")
-        st.caption("AI-Powered Contract Intelligence & Risk Quantification")
+        render_brand()
         st.markdown("---")
 
-        st.subheader("Perspective Calibration")
+        st.markdown('<div class="sidebar-label">Analysis perspective</div>', unsafe_allow_html=True)
         role = st.selectbox(
-            "Select Your Legal Role",
+            "Your position in the agreement",
             options=["Client", "Vendor", "Licensor", "Licensee", "Employer", "Employee"],
             index=0,
             help="Contract risk weights adjust automatically to highlight risks specific to your legal role.",
         )
 
         st.markdown("---")
-        st.subheader("Engine & Security")
+        st.markdown('<div class="sidebar-label">System status</div>', unsafe_allow_html=True)
         online = is_ollama_online(ollama_base_url)
         if online:
-            st.success(f"Private Local AI (`{ollama_model}`)")
+            st.success(f"Local AI online · {ollama_model}")
         else:
-            st.warning("Local AI Offline (Rule-Based Fallback Mode Active)")
+            st.warning("Rule-based fallback active")
 
         st.markdown("---")
-        st.info(
-            "🔒 **Enterprise Privacy Active**: 100% local processing. No contract text or company data ever leaves your device."
+        st.markdown(
+            '<div class="privacy-card"><strong>🔒 Private by default</strong>'
+            '<span>Contract text and company data are processed locally and never leave this device.</span></div>',
+            unsafe_allow_html=True,
         )
 
     # --- MAIN HERO SECTION ---
-    st.title("⚖️ LexGuard AI — Contract Risk & Intent Drift Intelligence")
-    st.caption(
-        "Automated contract risk evaluation, PII anonymization, and cross-version intent drift detection built for corporate legal teams and business executives."
-    )
+    render_hero()
 
     # Top Visual Guide Banner
     render_guide_banner()
 
     # Product Tabs (Clean 2-tab Commercial View)
     tab1, tab2 = st.tabs([
-        "📊 Contract Risk Audit Dashboard",
-        "🔀 Version Drift & Revision Comparison"
+        "Contract risk audit",
+        "Compare versions",
     ])
 
     # =========================================================================
     # TAB 1: CONTRACT RISK AUDIT DASHBOARD
     # =========================================================================
     with tab1:
-        st.header("Contract Risk Audit")
-        st.caption("Upload a legal agreement to analyze clause-by-clause exposure, fact-checked AI insights, and privacy protection.")
+        render_section_heading(
+            "Single agreement review",
+            "Contract risk audit",
+            "Upload an agreement for clause-level exposure, privacy masking, and source-verified insights.",
+        )
 
         uploaded_file = st.file_uploader(
-            "Upload Contract Agreement (PDF or DOCX)",
+            "Agreement file",
             type=["pdf", "docx"],
             key="single_doc_uploader",
         )
@@ -124,7 +127,6 @@ def main() -> None:
             # Compute summary stats
             scores = [n.risk_score for n in nodes if n.risk_score is not None]
             avg_score = sum(scores) / len(scores) if scores else 0.0
-            max_score = max(scores) if scores else 0.0
             high_risk_count = sum(1 for s in scores if s >= 0.7)
             entity_count = len(envelope.entity_map)
             verified_claims_count = sum(len(n.verified_claims) for n in nodes)
@@ -164,7 +166,6 @@ def main() -> None:
                 categories = sorted(list({n.category for n in nodes if n.category}))
                 cat_filter = st.selectbox("Category Filter", options=["All Categories"] + categories)
 
-            st.subheader("Clause Exposure & Risk Analysis")
             filtered_nodes = nodes
             if cat_filter != "All Categories":
                 filtered_nodes = [n for n in filtered_nodes if n.category == cat_filter]
@@ -172,6 +173,12 @@ def main() -> None:
                 filtered_nodes = [
                     n for n in filtered_nodes if search_query in (n.text or "").lower() or search_query in (n.masked_text or "").lower()
                 ]
+
+            render_section_heading(
+                "Detailed findings",
+                "Clause exposure analysis",
+                f"Showing {len(filtered_nodes)} of {len(nodes)} analyzed clauses.",
+            )
 
             for n in filtered_nodes:
                 badge_html = render_risk_badge(n.risk_score)
@@ -202,20 +209,23 @@ def main() -> None:
                 mime="application/json",
             )
         else:
-            st.info("💡 Upload a contract document above to view complete risk analysis and clause breakdown.")
+            render_empty_state("Upload an agreement to generate a complete risk analysis and clause breakdown.")
 
     # =========================================================================
     # TAB 2: TWO-VERSION INTENT DRIFT COMPARISON
     # =========================================================================
     with tab2:
-        st.header("Version Drift & Revision Comparison")
-        st.caption("Compare original contract against counterparty redline revisions to detect hidden obligation shifts or deleted rights.")
+        render_section_heading(
+            "Revision intelligence",
+            "Version drift comparison",
+            "Compare an original agreement with a revision to uncover obligation shifts, redrafts, and deleted rights.",
+        )
 
         col_v1, col_v2 = st.columns(2)
         with col_v1:
-            file_v1 = st.file_uploader("Upload Original Agreement (Version 1)", type=["pdf", "docx"], key="v1_uploader")
+            file_v1 = st.file_uploader("Original agreement · Version 1", type=["pdf", "docx"], key="v1_uploader")
         with col_v2:
-            file_v2 = st.file_uploader("Upload Revised Redline (Version 2)", type=["pdf", "docx"], key="v2_uploader")
+            file_v2 = st.file_uploader("Revised agreement · Version 2", type=["pdf", "docx"], key="v2_uploader")
 
         if file_v1 is not None and file_v2 is not None:
             bytes_v1 = file_v1.getvalue()
@@ -252,7 +262,11 @@ def main() -> None:
                 st.metric("🔴 Critical Redrafts", rewrite_count, help="Major legal changes, added obligations, or deleted rights.")
 
             st.markdown("---")
-            st.subheader("Clause Comparison Matrix")
+            render_section_heading(
+                "Detailed findings",
+                "Clause comparison matrix",
+                f"Reviewing {len(drifts)} matched clause changes across both versions.",
+            )
 
             for drift in drifts:
                 left_id = drift.get("left_clause_id", "")
@@ -277,7 +291,7 @@ def main() -> None:
                 mime="application/json",
             )
         else:
-            st.info("💡 Upload both Original Contract V1 and Revised Contract V2 above to run automated drift comparison.")
+            render_empty_state("Add both agreement versions to begin the semantic drift comparison.")
 
 
 if __name__ == "__main__":
