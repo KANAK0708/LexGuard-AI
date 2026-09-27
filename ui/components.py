@@ -29,14 +29,14 @@ def inject_custom_css() -> None:
     [data-testid="stMarkdownContainer"] span,
     .product-title,
     .product-subtitle {
-        color: #FF0000 !important;
+        color: #FFFFFF !important;
     }
 
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span {
-        color: #FF0000 !important;
+        color: #FFFFFF !important;
     }
 
     /* Risk Badges */
