@@ -26,6 +26,10 @@ def inject_custom_css() -> None:
     [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p, [data-testid="stSidebar"] .stCaption { color: #9cadbf !important; }
     [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,.1); }
     [data-testid="stSidebar"] [data-baseweb="select"] > div { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
+    [data-testid="stSidebar"] [data-baseweb="select"] span,
+    [data-testid="stSidebar"] [data-baseweb="select"] input,
+    [data-testid="stSidebar"] [data-baseweb="select"] div { color: #111827 !important; }
+    [data-testid="stSidebar"] [data-baseweb="select"] svg { fill: #475569 !important; }
     h1, h2, h3, h4 { color: var(--ink) !important; letter-spacing: -.025em; }
     p, label, [data-testid="stCaptionContainer"] { color: var(--muted); }
 
