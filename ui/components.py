@@ -22,14 +22,23 @@ def inject_custom_css() -> None:
     .main .block-container { max-width: 1220px; padding: 2rem 2.25rem 4rem; }
     [data-testid="stSidebar"] { background: linear-gradient(180deg,var(--navy-950),var(--navy-900)); border-right: 1px solid rgba(255,255,255,.08); }
     [data-testid="stSidebar"] > div:first-child { padding-top: 1.25rem; }
-    [data-testid="stSidebar"] * { color: #f8fafc; }
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] { color: #f8fafc; }
     [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p, [data-testid="stSidebar"] .stCaption { color: #9cadbf !important; }
     [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,.1); }
-    [data-testid="stSidebar"] [data-baseweb="select"] > div { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.16); }
-    [data-testid="stSidebar"] [data-baseweb="select"] span,
-    [data-testid="stSidebar"] [data-baseweb="select"] input,
-    [data-testid="stSidebar"] [data-baseweb="select"] div { color: #111827 !important; }
-    [data-testid="stSidebar"] [data-baseweb="select"] svg { fill: #475569 !important; }
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] > div {
+        background: #ffffff !important;
+        border-color: #d6dde6 !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] > div * {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        opacity: 1 !important;
+    }
+    [data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] svg {
+        color: #475569 !important;
+        fill: #475569 !important;
+    }
     h1, h2, h3, h4 { color: var(--ink) !important; letter-spacing: -.025em; }
     p, label, [data-testid="stCaptionContainer"] { color: var(--muted); }
 
